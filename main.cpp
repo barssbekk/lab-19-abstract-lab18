@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -44,5 +45,10 @@ public:
 };
 
 int main() {
+    vector<Movie> movieList{};
+    Movie movieOne{};
+    movieOne.setTitle("Attack On Titan");
+    movieList.push_back(movieOne);
+
     return 0;
 }
