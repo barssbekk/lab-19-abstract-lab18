@@ -25,6 +25,14 @@ public:
     // Setter
     void setTitle(const string& title) { m_title = title; }
     void setHead(Node* head) { m_head = head; }
+
+    void addReview(const Review& review) {
+        Node* newNode{new Node};
+        newNode->value = review;
+        while (m_head) {
+
+        }
+    }
 };
 
 int main() {
