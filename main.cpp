@@ -44,6 +44,23 @@ public:
             current->next = newNode;
         }
     }
+
+    double calcAvg() {
+        double sum{};
+        int count{0};
+
+        Node* current = m_head;
+
+        while (current) {
+            sum += current->value.rating;
+            current = current->next;
+            ++count;
+        }
+
+        if (count == 0) return 0;
+
+        return sum / count;
+    }
 };
 
 int main() {
