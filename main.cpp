@@ -48,6 +48,9 @@ public:
 
 int main() {
     srand(time(0));
+    const int MIN{1};
+    const int MAX{5};
+
     vector<Movie> movieList{};
     Movie movieOne{};
     movieOne.setTitle("Attack On Titan");
@@ -61,11 +64,13 @@ int main() {
 
     string inputLine{}; // To read each line
 
+
     while (getline(fileInput, inputLine)) {
         Review review{};
         review.comment = inputLine;
+        review.rating = (rand() % (MAX - MIN + 1) + MIN) / 10.0;
+        movieList.at(0).addReview(review);
     }
-
 
     return 0;
 }
