@@ -29,8 +29,16 @@ public:
     void addReview(const Review& review) {
         Node* newNode{new Node};
         newNode->value = review;
-        while (m_head) {
+        newNode->next = nullptr;
 
+        if (!m_head) {
+            m_head = newNode;
+        } else {
+            Node* current{nullptr};
+            while (current->next) {
+                current = current->next;
+            }
+            current->value = review;
         }
     }
 };
