@@ -24,10 +24,8 @@ public:
     Movie() : m_title{""}, m_head{nullptr} {}
     // Getter
     string getTitle() { return m_title; }
-    Node* getHead() { return m_head; }
     // Setter
     void setTitle(const string& title) { m_title = title; }
-    void setHead(Node* head) { m_head = head; }
 
     void addReview(const Review& review) {
         Node* newNode{new Node};
@@ -62,23 +60,21 @@ public:
         return sum / count;
     }
 
+
     void printReviews() {
-        Node* current = m_head;
+        Node* current{m_head};
         int count{1};
-
-        cout << "Movie: " << m_title << "\n";
-
+        const double avg = calcAvg();
+        cout << "Outputting all reviews:\n";
         while (current) {
-            cout << "Review #" << count << ": "
-                 << current->value.rating << " - "
-                 << current->value.comment << endl;
-
+            cout << "\t > Review #" << count << ": "
+                                    << current->value.rating << ": "
+                                    << current->value.comment << '\n';
             current = current->next;
             ++count;
         }
-
-        cout << "Average rating: " << calcAvg() << endl;
-        cout << '\n';
+        cout << fixed << setprecision(2)
+             << "\t > Average rating: " << avg << '\n';
     }
 };
 
@@ -90,7 +86,20 @@ int main() {
     vector<Movie> movieList{};
     Movie movieOne{};
     movieOne.setTitle("Attack On Titan");
+
+    Movie movieTwo{};
+    movieTwo.setTitle("Dan Da Dan");
+
+    Movie movieThree{};
+    movieThree.setTitle("Demon Slayer");
+
+    Movie movieFour{};
+    movieFour.setTitle("ReLIFE");
+
     movieList.push_back(movieOne);
+    movieList.push_back(movieTwo);
+    movieList.push_back(movieThree);
+    movieList.push_back(movieFour);
 
     ifstream fileInput{"review.txt"};
     if (!fileInput) {
