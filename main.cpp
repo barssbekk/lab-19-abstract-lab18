@@ -34,11 +34,11 @@ public:
         if (!m_head) {
             m_head = newNode;
         } else {
-            Node* current{nullptr};
+            Node* current{m_head};
             while (current->next) {
                 current = current->next;
             }
-            current->value = review;
+            current->next = newNode;
         }
     }
 };
