@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <ctime>
 
 using namespace std;
 
@@ -46,6 +47,7 @@ public:
 };
 
 int main() {
+    srand(time(0));
     vector<Movie> movieList{};
     Movie movieOne{};
     movieOne.setTitle("Attack On Titan");
@@ -63,6 +65,7 @@ int main() {
         Review review{};
         review.comment = inputLine;
     }
+
 
     return 0;
 }
