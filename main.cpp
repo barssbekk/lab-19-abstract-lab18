@@ -3,6 +3,7 @@
 #include <vector>
 #include <fstream>
 #include <ctime>
+#include <iomanip>
 
 using namespace std;
 
@@ -22,6 +23,16 @@ private:
     Node* m_head{};
 public:
     Movie() : m_title{""}, m_head{nullptr} {}
+    ~Movie() {
+        Node* current = m_head;
+        while (current) {
+            m_head = current->next;
+            delete current;
+            current = m_head;
+        }
+        m_head = nullptr;
+    }
+
     // Getter
     string getTitle() { return m_title; }
     // Setter
@@ -30,17 +41,8 @@ public:
     void addReview(const Review& review) {
         Node* newNode{new Node};
         newNode->value = review;
-        newNode->next = nullptr;
-
-        if (!m_head) {
-            m_head = newNode;
-        } else {
-            Node* current{m_head};
-            while (current->next) {
-                current = current->next;
-            }
-            current->next = newNode;
-        }
+        newNode->next = m_head;
+        m_head = newNode;
     }
 
     double calcAvg() {
@@ -65,7 +67,7 @@ public:
         Node* current{m_head};
         int count{1};
         const double avg = calcAvg();
-        cout << "Outputting all reviews:\n";
+        cout << m_title << '\n';
         while (current) {
             cout << "\t > Review #" << count << ": "
                                     << current->value.rating << ": "
