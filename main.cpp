@@ -61,12 +61,30 @@ public:
 
         return sum / count;
     }
+
+    void printReviews() {
+        Node* current = m_head;
+        int count{1};
+
+        cout << "Movie: " << m_title << "\n";
+
+        while (current) {
+            cout << "Review #" << count << ": "
+                 << current->value.rating << " - "
+                 << current->value.comment << endl;
+
+            current = current->next;
+            ++count;
+        }
+
+        cout << "Average rating: " << calcAvg() << endl;
+    }
 };
 
 int main() {
     srand(time(0));
-    const int MIN{1};
-    const int MAX{5};
+    const int MIN{10};
+    const int MAX{50};
 
     vector<Movie> movieList{};
     Movie movieOne{};
