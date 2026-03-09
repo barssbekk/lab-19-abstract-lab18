@@ -9,16 +9,22 @@ struct Review {
 };
 
 struct Node {
-    double value{};
+    Review value{};
     Node* next{};
 };
 
 class Movie {
 private:
     string m_title{};
-    Node* head{};
+    Node* m_head{};
 public:
-
+    Movie() : m_title{""}, m_head{nullptr} {}
+    // Getter
+    string getTitle() { return m_title; }
+    Node* getHead() { return m_head; }
+    // Setter
+    void setTitle(const string& title) { m_title = title; }
+    void setHead(Node* head) { m_head = head; }
 };
 
 int main() {
