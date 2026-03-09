@@ -78,6 +78,7 @@ public:
         }
 
         cout << "Average rating: " << calcAvg() << endl;
+        cout << '\n';
     }
 };
 
@@ -99,13 +100,17 @@ int main() {
 
     string inputLine{}; // To read each line
 
-
+    int movieIndex{0};
     while (getline(fileInput, inputLine)) {
         Review review{};
         review.comment = inputLine;
         review.rating = (rand() % (MAX - MIN + 1) + MIN) / 10.0;
-        movieList.at(0).addReview(review);
+        movieList.at(movieIndex).addReview(review);
+        movieIndex = (movieIndex + 1) % movieList.size();
     }
+
+    for (Movie& movie : movieList)
+        movie.printReviews();
 
     return 0;
 }
