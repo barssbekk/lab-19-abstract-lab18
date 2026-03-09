@@ -56,7 +56,13 @@ int main() {
         cerr << "File not found\n";
         return 1;
     }
-   
+
+    string inputLine{}; // To read each line
+
+    while (getline(fileInput, inputLine)) {
+        Review review{};
+        review.comment = inputLine;
+    }
 
     return 0;
 }
