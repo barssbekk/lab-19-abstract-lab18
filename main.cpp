@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
 
 using namespace std;
 
@@ -49,6 +50,13 @@ int main() {
     Movie movieOne{};
     movieOne.setTitle("Attack On Titan");
     movieList.push_back(movieOne);
+
+    ifstream fileInput{"review.txt"};
+    if (!fileInput) {
+        cerr << "File not found\n";
+        return 1;
+    }
+   
 
     return 0;
 }
